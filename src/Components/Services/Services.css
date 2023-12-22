@@ -1,0 +1,30 @@
+
+.service__item {
+    font-size: 13px;
+    height: 100px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgb(115, 175, 168);
+    display: flex;
+    align-items: center;
+    column-gap: 0.7rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.service__item span i {
+    font-size: 2rem;
+    background-color: black;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+}
+
+.service__item h3{
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.service__item p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

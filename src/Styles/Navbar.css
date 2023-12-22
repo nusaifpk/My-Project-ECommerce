@@ -1,0 +1,150 @@
+.Navlogo{
+    height: 40px;
+    width: 100px;
+}
+.Navbar{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    background-color:#1b2430;
+}
+
+.Navitems{
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: wheat;
+    transition: 0.3s ease-in-out;
+}
+.Navitems:hover,.Navitems:active{
+    color: #DC143C;
+}
+
+
+.navIcons{
+    height: 30px;
+    width: 30px;
+}
+.navFavIcons{
+    height: 30px;
+    width: 30px;  
+}
+
+
+.input-search{
+    height: 40px;
+}
+.btn-search{
+    margin-left: 10px;
+    background:transparent;
+    border: 1px solid #DC143C;
+    height: 40px;
+}
+.btn-search:hover{
+    background-color: #DC143C;
+}
+
+.badge{
+    position: absolute;
+    content: '';
+    background-color: #DC143C;
+    color: white;
+    border-radius: 50px;
+    font-size: .6rem;
+    font-weight: 600;
+    z-index: 10;  
+}
+.space{
+    display: flex;
+    justify-content: space-between;
+}
+/* .Navitems:hover::after,
+.Navitems.active::after{
+    content:"";
+    width: 3%;
+    height: 2px;
+    background-color: #DC143C;
+    position: absolute;
+    bottom: 15px;
+    left: .1px;
+} */
+
+
+
+
+
+/* 
+
+
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+#navbar li a {
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: wheat;
+    transition: 0.3s ease-in-out;
+}
+#navbar li a:hover,
+#navbar li a.active{
+    color: #DC143C;
+}
+#navbar li a:hover::after,
+#navbar li a.active::after{
+    content:"";
+    width: 40%;
+    height: 2px;
+    background-color: #DC143C;
+    position: absolute;
+    bottom: -4px;
+    left: 20px; 
+}
+
+.navSearch{
+    background-color: wheat;
+    height: 30px;
+    border-radius: 12px;
+    border: 1px solid;
+    padding-left: 10px;
+}
+
+.navSearch:hover{
+    background-color: rgb(221, 199, 159);
+    border: 1px solid;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 769px) {
+    #navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: fixed;
+        top: 90px;
+        width: 300px;
+        height: 100px;
+        background-color: #1b2430;
+    
+    }
+} */
