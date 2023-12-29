@@ -1,9 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-export const Cart = () => {
+const Cart = ({ cartItems }) => {
+  console.log(cartItems);
   return (
-    <div>Cart Page
-      <center><img src='https://images.squarespace-cdn.com/content/v1/5497cff1e4b0164414e293bc/541e185e-9477-4069-8936-b02b21e485f6/website-under-construction.png?format=1500w'></img></center>
+    <div>
+      <h3>Shopping Cart</h3>
+      <ul>
+        {cartItems.map((item) => (
+          <li key={item.id}>
+            {item.name} - {item.price}
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};
+
+export default Cart;

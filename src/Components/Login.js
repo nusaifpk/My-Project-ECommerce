@@ -45,29 +45,31 @@ const Login = () => {
     };
 
     return (
-        <div className='wrapper'>
-            <div className='form-box'>
-                <form onSubmit={handleSubmit}>
-                    <h2><center>Login Page</center></h2>
-                    
-                    <div className='input-box'>
-                        <input type='email' required
-                            name='email'
-                            placeholder='Email'
-                            onChange={handleChange} />
-                            {errors.email && <span>{errors.email}</span>}
-                    </div>
+        <div className='reg-container'>
+            <div className='wrapper'>
+                <div className='form-box'>
+                    <form onSubmit={handleSubmit}>
+                        <h2><center>Login Page</center></h2>
+                        
+                        <div className='input-box'>
+                            <input type='email' required
+                                name='email'
+                                placeholder='Email'
+                                onChange={handleChange} />
+                                {errors.email && <span>{errors.email}</span>}
+                        </div>
 
-                    <div className='input-box'>
-                        <input type='password' required
-                            name='password'
-                            placeholder='Password'
-                            onChange={handleChange} />
-                            {errors.password && <span>{errors.password}</span>}
-                    </div>
+                        <div className='input-box'>
+                            <input type='password' required
+                                name='password'
+                                placeholder='Password'
+                                onChange={handleChange} />
+                                {errors.password && <span>{errors.password}</span>}
+                        </div>
 
-                    <button type='submit' className='btn-sub'>Login</button>
-                </form>
+                        <button type='submit' className='btn-sub'>Login</button>
+                    </form>
+                </div>
             </div>
         </div>
     );

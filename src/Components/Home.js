@@ -1,10 +1,12 @@
 import React from 'react'
-import {motion} from 'framer-motion'
 import '../Styles/Home.css'
 import "bootstrap/dist/css/bootstrap.min.css";
+import {motion} from 'framer-motion'
 import {Container , Row,Col} from 'reactstrap';
 import {useNavigate} from 'react-router-dom'
-import Services from './Services/Services';
+
+import Services from './Services/Services'
+import ProductSection from '../UI/ProductSection';
 
 const Home = () => {
   const setNavigate = useNavigate();
@@ -37,7 +39,19 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg='12' className='text-center'>
-              <h2 className='section__title'>Trending Products</h2>
+              <h2 className='section__title'>Trending Now</h2>
+            </Col>
+            <ProductSection />
+          </Row>
+        </Container>
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg='12'>
+            <h1 className='shopping__for'>Shopping For ?</h1>
+            <a href='mens'><img src='https://s7ap1.scene7.com/is/image/adityabirlafashion/RBK_D_New%20shop%20for%20men?resMode=sharp2&wid=1300&hei=400' className="bar__img" alt='men' /></a>
+            <a href='womens'><img src='https://s7ap1.scene7.com/is/image/adityabirlafashion/RBK_D_New%20shop%20for%20women?resMode=sharp2&wid=1300&hei=400' className="bar__img" alt='women' /></a>
             </Col>
           </Row>
         </Container>

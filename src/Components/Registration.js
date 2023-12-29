@@ -69,46 +69,48 @@ const Registration = () => {
     }
 
   return (
-    <div className='wrapper'>
-        <div className='form-box'>
-            <center><img src={logo} className='img-logo' alt='logo' /></center>
-                <form onSubmit={handleSubmit}>
-                    <h2><center>Registration Page</center></h2>
-                    
-                    <div className='input-box'>
-                        <input type='text' required 
-                                name='username'
-                                placeholder='Username' 
-                                onChange={handleChange} />
-                                {errors.username}<span>{errors.username}</span>
-                    </div>
+    <div className='reg-container'>
+        <div className='wrapper'>
+            <div className='form-box'>
+                <center><img src={logo} className='img-logo' alt='logo' /></center>
+                    <form onSubmit={handleSubmit}>
+                        <h2><center>Registration Page</center></h2>
+                        
+                        <div className='input-box'>
+                            <input type='text' required 
+                                    name='username'
+                                    placeholder='Username' 
+                                    onChange={handleChange} />
+                                    {errors.username}<span>{errors.username}</span>
+                        </div>
 
-                    <div className='input-box'>
-                        <input type='email' required
-                                name='email' 
-                                placeholder='Email' 
-                                onChange={handleChange} />
-                                {errors.email} <span>{errors.email}</span>
-                    </div>
+                        <div className='input-box'>
+                            <input type='email' required
+                                    name='email' 
+                                    placeholder='Email' 
+                                    onChange={handleChange} />
+                                    {errors.email} <span>{errors.email}</span>
+                        </div>
 
-                    <div className='input-box'>
-                        <input type='password' required 
-                                name='password'
-                                placeholder='Password' 
-                                onChange={handleChange} />
-                                {errors.password} <span>{errors.password}</span>
-                    </div>
-                    
-                    <div className='input-box'>
-                        <input type='password' required 
-                                name='confirmpassword'
-                                placeholder='Confirm Password' 
-                                onChange={handleChange} />
-                                {errors.confirmpassword} <span>{errors.confirmpassword}</span>
-                    </div>
+                        <div className='input-box'>
+                            <input type='password' required 
+                                    name='password'
+                                    placeholder='Password' 
+                                    onChange={handleChange} />
+                                    {errors.password} <span>{errors.password}</span>
+                        </div>
+                        
+                        <div className='input-box'>
+                            <input type='password' required 
+                                    name='confirmpassword'
+                                    placeholder='Confirm Password' 
+                                    onChange={handleChange} />
+                                    {errors.confirmpassword} <span>{errors.confirmpassword}</span>
+                        </div>
 
-                    <button type='submit' className='btn-sub'>Register</button>
-                </form>
+                        <button type='submit' className='btn-sub'>Register</button>
+                    </form>
+            </div>
         </div>
     </div>
   )
