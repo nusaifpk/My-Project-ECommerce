@@ -1,0 +1,10 @@
+.bill__main__div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bill__form{
+    margin: 16px;
+    margin-top: 30px;
+}
+

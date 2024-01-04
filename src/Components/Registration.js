@@ -1,119 +1,75 @@
-import { useState } from 'react'
+import React, { useContext, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Data } from '../App';
+import toast from 'react-hot-toast';
 import '../Styles/RegLog.css'
-import logo from '../Assets/xplorshoes.png'
-import { useNavigate } from 'react-router-dom';
-
+import Logo from '../Assets/xplor.png'
 
 const Registration = () => {
-    
-    
-    const initialValue = {username: "", email: "", password: "", confirmpassword: ""} 
-    
-    const [formData,setFormData] = useState(initialValue); // State to manage form data
-    const [errors,setErrors] = useState({})                // State to manage validation errors
-   
-    const navigate = useNavigate();                  
+  const navigate = useNavigate();
+  const { userData, setUserData } = useContext(Data);
+  const userNameRef = useRef(null);
+  const emailIdRef = useRef(null);
+  const passwordRef = useRef(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
-    
+  const submit = (e) => {
+    e.preventDefault();
+    const username = userNameRef.current.value;
+    const emailId = emailIdRef.current.value;
+    const password = passwordRef.current.value;
 
-    const handleChange = (e) => {                       // Event handler for form input changes
-        const {name, value} = e.target;
-        setFormData({...formData, [name] : value})
+    if (!username || !emailId || !password) {
+      setErrorMessage('Please fill out the form');
+      return;
     }
-    const handleSubmit = (e) => {                       // Event handler for form submission
-        e.preventDefault()
-        
-        const validationErrors = {}                     // Object to store validation errors
-        
-       
-        if(!formData.username.trim()){                  // Validation checks for each form field
-            validationErrors.username = "Username is required"
-        }
-        
-        if(!formData.email.trim()){
-            validationErrors.email= "Email is required"
-        }else if(/\S+@\S\.\S+/.test(formData.email)){
-            validationErrors.email= "Enter valid email...!"
-        }
-        
-        if(!formData.password.trim()){
-            validationErrors.password= "Password is required"
-        }else if(formData.password.length < 6){
-            validationErrors.password= "Password must be 6 characters"
-        }
 
-        if(formData.confirmpassword !== formData.password){
-            validationErrors.confirmpassword = "password does not match...!"
-        }
-
-        setErrors(validationErrors);    // Set validation errors in state
-
-        // If there is no errors, proceed with registration 
-        if (Object.keys(validationErrors).length === 0) { 
-            
-             // Create a new user object
-            const newUser = { username: formData.username, email: formData.email, password: formData.password };
-            
-             // Retrieve existing users from localStorage or create an empty array
-            const existingUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-           
-            // Add new user to existing users
-            const updatedUsers = [...existingUsers, newUser];
-
-            // Store updated users array in localStorage
-            localStorage.setItem('registeredUsers', JSON.stringify(updatedUsers));
-
-            alert('Registered Successfully');
-            navigate('/login');
-        }
+    const isEmailValid = /\S+@\S+\.\S+/.test(emailId);
+    if (!isEmailValid) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
     }
+
+    if (password.length < 6) {
+      setErrorMessage('Password must be at least 6 characters long.');
+      return;
+    }
+
+    if (userData.find((user) => user.userName === username)) {
+      setErrorMessage('Username already exists. Please choose a different one.');
+      return;
+    }
+
+    setErrorMessage('');
+    const newUser = { userName: username, emailId: emailId, password: password, cart: [] };
+    setUserData([...userData, newUser]);
+    toast.success('Registered Successfully');
+    navigate('/login');
+  };
 
   return (
-    <div className='reg-container'>
-        <div className='wrapper'>
-            <div className='form-box'>
-                <center><img src={logo} className='img-logo' alt='logo' /></center>
-                    <form onSubmit={handleSubmit}>
-                        <h2><center>Registration Page</center></h2>
-                        
-                        <div className='input-box'>
-                            <input type='text' required 
-                                    name='username'
-                                    placeholder='Username' 
-                                    onChange={handleChange} />
-                                    {errors.username}<span>{errors.username}</span>
-                        </div>
+    
+      <center><div className="container">
+      <div className='rounded shadow p-3 mb-5 bg-white' style={{ width: '25rem' }}>
+        <form>
+          <img src={Logo} alt='' className='img-logo' />         
 
-                        <div className='input-box'>
-                            <input type='email' required
-                                    name='email' 
-                                    placeholder='Email' 
-                                    onChange={handleChange} />
-                                    {errors.email} <span>{errors.email}</span>
-                        </div>
+          <h5 className='mt-3' style={{ fontFamily: 'inherit' }}>Registration Page</h5>
+          
+          <input ref={userNameRef} className='form-control mt-3' type='text' placeholder='Username' /><br />
+          <input ref={emailIdRef} className='form-control mt-4' type='email' placeholder='Email' /><br />
+          <input ref={passwordRef} className='form-control mt-4' type='password' placeholder='Password' />
+          
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
-                        <div className='input-box'>
-                            <input type='password' required 
-                                    name='password'
-                                    placeholder='Password' 
-                                    onChange={handleChange} />
-                                    {errors.password} <span>{errors.password}</span>
-                        </div>
-                        
-                        <div className='input-box'>
-                            <input type='password' required 
-                                    name='confirmpassword'
-                                    placeholder='Confirm Password' 
-                                    onChange={handleChange} />
-                                    {errors.confirmpassword} <span>{errors.confirmpassword}</span>
-                        </div>
-
-                        <button type='submit' className='btn-sub'>Register</button>
-                    </form>
-            </div>
-        </div>
+          <button className='btn btn-primary rounded mt-4 w-100' onClick={submit}>Sign up</button>
+          
+          <p className='mt-4'> Already have an account? <Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></p>
+        </form>
+      </div>
     </div>
-  )
-}
+    </center>
+  );
+};
 
-export default Registration
+export default Registration;
