@@ -1,4 +1,4 @@
-.reg-container{
+/* .reg-container{
   background-image: url('../Assets/bg.jpg');
   background-size: cover;
 }
@@ -20,14 +20,11 @@
     box-shadow:  0 0 30px rgba(0, 0, 0, .5);
     left:500px;
     top: 30px;
-  
   }
-  
-  /* 
-  .wrapper .form-box{
-    width: 300px;
-    padding: 40px;
-  } */
+
+  .form-box{
+    padding-top:30px;
+  }
   
   .img-logo{
     height: 50px;
@@ -83,7 +80,16 @@
   .btn-reg:hover{
     background-color: #20394d;
   }
-  
+
   input::placeholder {
     color: #999; 
+  }
+
+  .register__now{
+    color: wheat;
+
+  } */
+ 
+  .img-logo{
+    height: 50px;
   }

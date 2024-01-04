@@ -1,67 +1,68 @@
-.Navlogo{
-    height: 40px;
-    width: 100px;
-}
-.Navbar{
+/* Navbar.css */
+
+.Navbar {
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-    background-color:#1b2430;
-}
-
-.Navitems{
+    background-color: #1b2430;
+  }
+  
+  .Navlogo {
+    height: 40px;
+    width: 100px;
+  }
+  
+  .navIcons {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .input-search {
+    height: 40px;
+  }
+  
+  .btn-search {
+    margin-left: 10px;
+    background: transparent;
+    border: 1px solid #dc143c;
+    height: 40px;
+  }
+  
+  .btn-search:hover {
+    background-color: #dc143c;
+  }
+  
+  .space {
+    display: flex;
+    margin-left: 10px;
+    justify-content: space-between;
+  }
+  
+  .link__navitems {
     text-decoration: none;
     font-size: 1.1em;
     font-weight: 600;
     color: white;
     transition: 0.3s ease-in-out;
-}
-.Navitems:hover{
-    color: #DC143C;
-}
-.Navitems.active{
-    color:  #DC143C;
-}
-
-
-.navIcons{
-    height: 30px;
-    width: 30px;
-}
-.navFavIcons{
-    height: 30px;
-    width: 30px;  
-}
-
-
-.input-search{
-    height: 40px;
-}
-.btn-search{
-    margin-left: 10px;
-    background:transparent;
-    border: 1px solid #DC143C;
-    height: 40px;
-}
-.btn-search:hover{
-    background-color: #DC143C;
-}
-
-.badge{
-    position: absolute;
-    content: '';
-    background-color: #DC143C;
-    color: white;
-    border-radius: 50px;
-    font-size: .6rem;
-    font-weight: 600;
-    z-index: 10;  
-}
-.space{
+  }
+  
+  .link__navitems:hover {
+    color: #dc143c;
+  }
+  
+  .form {
     display: flex;
-    margin-left: 10px;
     justify-content: space-between;
-}
+    align-items: center;
+  }
+  
+  .username {
+    color: red;
+  }
+
+  #navbarScroll{
+    color: white;
+  }

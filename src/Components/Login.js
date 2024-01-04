@@ -1,78 +1,71 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../Styles/RegLog.css';
+import React, { useContext, useRef } from 'react';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { Data } from '../App';
+import toast from 'react-hot-toast';
+import '../Styles/RegLog.css'
 
 const Login = () => {
-    
-    const [formData, setFormData] = useState({ email: '', password: '' });
-    const [errors, setErrors] = useState({});
-    
-    const navigate = useNavigate();
+  const { userData, setLogin, setLoginUser } = useContext(Data);
+  const navigate = useNavigate();
+  const user = useRef();
+  const pass = useRef();
 
-    const storedUserData = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+  const logins = (e) => {
+    e.preventDefault();
+   
+    const username = user.current.value;
+    const password = pass.current.value;
+    if(username ==="admin" && password  === "admin"){
+      navigate('/admin')
+    }
+    const users = userData.find((item) => item.userName === username && item.password === password);
+    if (users) {
+      setLogin(true);
+      toast.success('Logged in Successfully');
+      navigate('/');
+      setLoginUser(users);
+    } else {
+      toast.error('User not found');
+    }
+  };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  return (
+    <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <div className="shadow p-3 mb-5 bg-white rounded m-3" style={{ width: '25rem' }}>
+        <div><h3><center>Login Page</center></h3></div>
+        <Row className="mb-3">
+          <Col>
+            <input className="form-control" placeholder="Username" ref={user} />
+          </Col>
+        </Row>
 
-        const validationErrors = {};
+        <Row className="mb-3">
+          <Col>
+            <input type="password" className="form-control" placeholder="Password" ref={pass} />
+          </Col>
+        </Row>
 
-        if (!formData.email.trim()) {
-            validationErrors.email = 'Email is required';
-        }
+        <Row className="mb-3">
+          <Col>
+            <h6 className="text-primary">Forgot password</h6>
+          </Col>
+        </Row>
 
-        if (!formData.password.trim()) {
-            validationErrors.password = 'Password is required';
-        }
+        <Row className="mb-3">
+          <Col>
+            <Button variant="success" onClick={logins} block>Login</Button>
+          </Col>
+        </Row>
 
-        setErrors(validationErrors);
-
-        if (Object.keys(validationErrors).length === 0) {
-          const userExists = storedUserData.some(
-              (user) => user.email === formData.email && user.password === formData.password
-          );
-  
-          if (userExists) {
-              alert('Login Successful');
-              navigate('/home');
-          } else {
-              alert('Invalid credentials. Please try again.');
-          }
-      }
-    };
-
-    return (
-        <div className='reg-container'>
-            <div className='wrapper'>
-                <div className='form-box'>
-                    <form onSubmit={handleSubmit}>
-                        <h2><center>Login Page</center></h2>
-                        
-                        <div className='input-box'>
-                            <input type='email' required
-                                name='email'
-                                placeholder='Email'
-                                onChange={handleChange} />
-                                {errors.email && <span>{errors.email}</span>}
-                        </div>
-
-                        <div className='input-box'>
-                            <input type='password' required
-                                name='password'
-                                placeholder='Password'
-                                onChange={handleChange} />
-                                {errors.password && <span>{errors.password}</span>}
-                        </div>
-
-                        <button type='submit' className='btn-sub'>Login</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    );
+        <Row>
+          <Col>
+            <h6 className="mt-3"> Don't have an account? <Link to="/registration">Signup</Link></h6>
+          </Col>
+        </Row>
+      </div>
+    </Container>
+  );
 };
 
 export default Login;

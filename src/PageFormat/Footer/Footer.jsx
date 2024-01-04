@@ -14,7 +14,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col lg='4'>
-          <Navbar.Brand href='/home'><img src={logo} className='Navlogo'></img></Navbar.Brand>
+          <Navbar.Brand href='/home'><img src={logo} className='Navlogo' alt=''></img></Navbar.Brand>
           <p className="footer__text" mt-4> 
           At XPLOR, we believe that the perfect pair of shoes can elevate your style, boost your confidence, and carry you through every step of your journey. Step into a world of unparalleled fashion and comfort as we present our curated collection of exquisite footwear for men, women, and children.
           </p>
@@ -44,7 +44,7 @@ const Footer = () => {
               <h4 className="quick__links-title">Useful Links</h4>
               <ListGroup>
                 <ListGroupItem className='ps-0 border-0'>
-                  <Link to='home' className='link' title='Go to Home Page'>Home</Link>
+                  <Link to='/' className='link' title='Go to Home Page'>Home</Link>
                 </ListGroupItem>
                 
                 <ListGroupItem className='ps-0 border-0'>
@@ -81,6 +81,7 @@ const Footer = () => {
           </Col>
           <Col lg='12'>
             <p className="footer__copyright">© {year} XPLOR, All right reserved.</p>
+            <p className="footer__copyright">Created by <b>NUSAIF PK</b></p>
           </Col>
 
         </Row>
