@@ -26,9 +26,7 @@
   .product-card p {
     color: #555;
   }
-  .imgcard{
-    border-radius: 10px;
-  }
+  
 
   .btn-to-view{
     text-decoration: none;
@@ -86,16 +84,15 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  
-  .imgcard {
-    max-width: 450px; 
+  .card__img{
+    height: 300px;
   }
+ 
   
   .product-details {
     flex-grow: 1;
     padding: 0 20px;
   }
 
-  .imgcard:hover{
-  }
+
   
